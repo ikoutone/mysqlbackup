@@ -1,7 +1,7 @@
 #!/bin/bash
 #Database information
-dbuser=ilkka
-dbpwd=Tummapall0m
+dbuser=USER
+dbpwd=PASSWORD
 
 #Selects all databases
 dbname="--all-databases"
@@ -10,7 +10,7 @@ dbname="--all-databases"
 date=$( date +%Y-%m-%d )
 
 #The name of the mysql dump file
-filename_temp=tyrion-backup-"$date".sql
+filename_temp=backup-"$date".sql
 
 mysqldump -u $dbuser --password=$dbpwd $dbname > $filename_temp
 gzip -9 $filename_temp
@@ -18,4 +18,4 @@ gzip -9 $filename_temp
 #Compressed filename
 filename=$filename_temp".gz"
 
-sudo mv $filename /home/ilkka/box/Backups/$filename
+sudo mv $filename /PATH/TO/WHERE/YOU/WANT/TO/MOVE
